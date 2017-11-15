@@ -31,7 +31,7 @@ const store = createStore(
   envCompose(middleware)
 )
 
-const App = () =>
+export const App = () =>
   <Provider store={store}>
     <Router>
       <Route component={Home}/>
