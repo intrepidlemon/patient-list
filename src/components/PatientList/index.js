@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
+import './patient-list.css'
+
 const PatientList = ({ keys, dict }) => {
 
   // placeholders
@@ -26,14 +28,16 @@ const PatientList = ({ keys, dict }) => {
 
 const Table = ({ keys, dict }) =>
   <table className="patient-list__table">
-    <tbody>
-      <tr>
+    <thead>
+      <tr className="patient-list__head">
         <th>Name</th>
         <th>MRN</th>
         <th>DOB</th>
         <th>Demographics</th>
         <th>Treatment site</th>
       </tr>
+    </thead>
+    <tbody>
       { keys.map( k =>
         <Row key={k} {...dict[k]} />
       )}
@@ -42,17 +46,19 @@ const Table = ({ keys, dict }) =>
 
 const Row = withRouter(({
   history,
-  match,
+  location,
   mrn,
   name,
   dob,
   sex,
   age,
   treatment_site: site,
-}) =>
-  <tr
-    onClick={() => history.push(`/patient/${mrn}`)}
-    className="patient-list__row"
+}) => {
+  const route = `/patient/${mrn}`
+  const selected = location.pathname === route
+  return <tr
+    onClick={() => history.push(route)}
+    className={`patient-list__row ${selected ? "patient-list__row--selected" : ""}`}
   >
     <td>{ name.first } { name.last }</td>
     <td>{ mrn }</td>
@@ -60,7 +66,7 @@ const Row = withRouter(({
     <td>{ age } yr old { sex }</td>
     <td>{ site }</td>
   </tr>
-)
+})
 
 const mapStateToProps = ({ patients }, props) => ({
   keys: patients.keys,

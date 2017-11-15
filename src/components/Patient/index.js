@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 
 import RangePlot from '../RangePlot'
 
-const Patient = ({ dict, mrn }) => {
+import './patient.css'
+
+const Patient = ({ dict, mrn, history }) => {
   if (dict === null) {
     return <div className="patient patient--loading"/>
   }
@@ -16,7 +18,7 @@ const Patient = ({ dict, mrn }) => {
     </div>
   }
 
-  return <PatientView {...patient}/>
+  return <PatientView {...patient} close={() => history.push("/")} />
 }
 
 const PatientView = ({
@@ -29,14 +31,25 @@ const PatientView = ({
   histology,
   name,
   weight,
+  close,
 }) => <div className="patient">
-  MRN: { mrn }
-  { dob }
-  { age } yr old { sex }
-  { size } cm { histology }
-  { weight } lb
-  <div>
-    <RangePlot point={weight} units="lbs" />
+  <div className="patient__row">
+    <h1>{ name.first } { name.last }</h1>
+    <button onClick={close}>✖</button>
+  </div>
+  <div className="patient__row">
+    <div>MRN: { mrn }</div>
+    <div>{ dob }</div>
+    <div>{ age } yr old { sex }</div>
+  </div>
+
+  <div className="patient__row">{ size } cm { histology }</div>
+
+  <div className="patient__row">
+    <div>{ weight } lb</div>
+    <div className="patient__weight-plot">
+      <RangePlot point={weight} units="lb" />
+    </div>
   </div>
 </div>
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import "./range-plot.css"
+
 const RangePlot = ({ max, min, median, units, point }) => {
   if (max === null) {
     return <div className="range-plot range-plot--loading"/>
@@ -12,7 +14,7 @@ const RangePlot = ({ max, min, median, units, point }) => {
 const xPos = (max, min, val) => (500*(val-min)/(max-min))
 
 const Plot = ({ max, min, median, units, point }) =>
-  <svg className="range-plot" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+  <svg className="range-plot" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 30">
     <path d="M0 0 V 20" stroke="black"/>
     <path d="M0 10 H 500" stroke="black"/>
     <path d="M500 0 V 20" stroke="black"/>

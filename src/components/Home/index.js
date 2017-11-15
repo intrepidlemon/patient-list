@@ -6,6 +6,8 @@ import { getPatients } from '../../actions/get'
 import PatientList from '../PatientList'
 import Patient from '../Patient'
 
+import './home.css'
+
 class Home extends Component {
   componentDidMount() {
     const { load } = this.props
@@ -14,10 +16,8 @@ class Home extends Component {
 
   render()  {
     return <div className="main">
-      <div className="main__patient-list">
-        <PatientList/>
-        <Route path="/patient/:mrn" component={Patient} />
-      </div>
+      <Route component={PatientList} />
+      <Route path="/patient/:mrn" component={Patient} />
     </div>
   }
 }
