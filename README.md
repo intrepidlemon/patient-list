@@ -1,7 +1,7 @@
 # Patient List
-This is a demo repository for the react challenge found [here](https://github.com/thearrow/react-challenge).
+This is a demo repository for a [react challenge](https://github.com/thearrow/react-challenge).
 
-![screenshot](/assets/screenshot.png?raw=true)
+![screenshot](/assets/screenshot.png)
 
 ## Demo
 ```sh
