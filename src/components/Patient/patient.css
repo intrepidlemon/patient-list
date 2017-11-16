@@ -6,6 +6,17 @@
   box-shadow: 0 0 0.5rem 0.5rem #eee;
 }
 
+.patient--missing {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-style: italic;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  background: lightpink;
+}
+
 .patient > * {
   margin: 0;
 }

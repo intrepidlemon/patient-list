@@ -10,15 +10,15 @@ const Patient = ({ dict, mrn, history }) => {
     return <div className="patient patient--loading"/>
   }
 
-  const patient = dict[mrn]
-
+  const patient = dict[mrn] || null
+  const close = () => history.push("/")
   if (patient === null) {
-    return <div className="patient patient--missing">
+    return <div className="patient patient--missing" onClick={close}>
       Patient not found
     </div>
   }
 
-  return <PatientView {...patient} close={() => history.push("/")} />
+  return <PatientView {...patient} close={close} />
 }
 
 const PatientView = ({
