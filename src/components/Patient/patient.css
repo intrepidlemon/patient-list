@@ -30,6 +30,7 @@
 }
 
 .patient__weight-plot {
-  flex-grow: 2
+  flex-grow: 2;
+  max-width: 35rem;
 }
 
