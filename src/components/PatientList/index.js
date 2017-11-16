@@ -9,8 +9,8 @@ const PatientList = ({ keys, dict }) => {
   // placeholders
   if (keys === null) {
     return <div className="patient-list">
-      { Array(10).map( _ =>
-        <div className="patient-list patient-list__placeholder"/>
+      { Array(6).fill().map( (_, i) =>
+        <div key={i} className="patient-list__placeholder"/>
       )}
     </div>
   }

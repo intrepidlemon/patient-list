@@ -34,3 +34,41 @@
   padding-left: 0.5rem;
 }
 
+.patient-list--empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-style: italic;
+  height: 100vh;
+  font-size: 3rem;
+}
+
+/* this is shamelessly copied from: https://stackoverflow.com/questions/35151887/how-to-create-placeholder-while-loading-like-facebook */
+@keyframes shimmer {
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+.patient-list__placeholder {
+    height: 1.4rem;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 1000px 104px;
+    position: relative;
+    overflow: hidden;
+}
+
+.patient-list__placeholder:first-child {
+  margin-top: 0;
+}
